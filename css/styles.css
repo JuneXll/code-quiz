@@ -1,1 +1,122 @@
-styles.css
+body {
+    font-family: sans-serif;
+}
+
+/* Header section */
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+#highscores {
+    text-decoration: none;
+    font-size:larger;
+    color:purple;
+}
+
+#highscores:hover {
+    color:#c1a1d3;
+}
+
+/* Section stylings */
+section {
+    width:100%;
+    margin-top:50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* div stylings */
+div {
+    width:50%;
+    height:50%;
+    margin: 15px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1, p {
+    padding: 15px;
+}
+
+#start {
+    background-color: purple;
+    color:white;
+    border-radius: 10px;
+}
+
+#start:hover {
+    background-color: #c1a1d3;
+}
+
+/* Finished page stylings */
+#finished {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#submit {
+    background-color: purple;
+    color: white;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+#submit:hover {
+    background-color: #c1a1d3;
+}
+
+
+/* Highscores page stylings */
+#high {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+}
+
+#button-div {
+    display: inline-block;
+    margin: 15px;
+}
+
+#go-back, #clear-highscores {
+    text-decoration: none;
+    background-color: purple;
+    color: white;
+    border-radius: 10px;
+}
+
+#go-back:hover {
+    background-color: #c1a1d3;
+    color:white;
+}
+
+#clear-highscores:hover {
+    background-color: #c1a1d3;
+}
+
+#score-list {
+    width: 90%;
+    padding: 0;
+}
+
+ol {
+    background-color: #c1a1d3;
+    width: 100%;
+}

@@ -11,15 +11,18 @@
         <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
-       <header>
-           <a href="highscores.html" id="highscores">View Highscores</a>
-           <h3>Time:<span id="timer">75</span></h3>
-       </header>
        <section>
-           <div>
-               <h1 id="heading-questions">Coding Quiz Challenge</h1>
-               <p id="instructions-choices">Try to answer the following code-related questions within the time limit. Keep in mind that the incorrect answers will penalize your score/time by ten seconds! </p>
-               <button id="start">Start Quiz</button>
+           <div id="high">
+               <h1>Highscores</h1>
+               <div id="score-list">
+                   <ol>
+                        <li>June-24</li>
+                   </ol>
+               </div>
+               <div id="button-div">
+               <button id="go-back"><a href="index.html" id="go-back">Go Back</a></button>
+               <button id="clear-highscores">Clear Highscores</button>
+                </div>
            </div>
        </section>
         <script src="script.js" async defer></script>
