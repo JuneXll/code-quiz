@@ -30,8 +30,8 @@ section {
     align-items: center;
 }
 
-/* div stylings */
-div {
+/* start stylings */
+#starting-div {
     width:50%;
     height:50%;
     margin: 15px;
@@ -120,3 +120,35 @@ ol {
     background-color: #c1a1d3;
     width: 100%;
 }
+
+/* Quiz stylings */
+#quiz {
+    display: none;
+    flex-direction: column;
+}
+
+#question {
+    display:block;
+}
+
+#choices {
+    margin: 10px;
+}
+
+.choiceAdd {
+    text-decoration: none;
+    background-color: purple;
+    color: white;
+    border-radius: 10px;
+}
+
+.choiceAdd:hover {
+    background-color: #c1a1d3;
+}
+
+hr {
+    display: none;
+    width:100%;
+    color:lightgray;
+}
+

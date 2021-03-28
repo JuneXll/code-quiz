@@ -16,10 +16,24 @@
            <h3>Time:<span id="timer">75</span></h3>
        </header>
        <section>
-           <div>
-               <h1 id="heading-questions">Coding Quiz Challenge</h1>
-               <p id="instructions-choices">Try to answer the following code-related questions within the time limit. Keep in mind that the incorrect answers will penalize your score/time by ten seconds! </p>
+           <div id="starting-div">
+               <h1>Coding Quiz Challenge</h1>
+               <p>Try to answer the following code-related questions within the time limit. Keep in mind that the incorrect answers will penalize your score/time by ten seconds! </p>
                <button id="start">Start Quiz</button>
+           </div>
+           
+           <div id="quiz">
+               <div id="question">
+
+               </div>
+               <div id="choices">
+                   <div class="choice" id="A" onclick="checkAnswer('A')"></div>
+                   <div class="choice" id="B" onclick="checkAnswer('B')"></div>
+                   <div class="choice" id="C" onclick="checkAnswer('C')"></div>
+                   <div class="choice" id="D" onclick="checkAnswer('D')"></div>
+                   <hr>
+               </div>
+
            </div>
        </section>
         <script src="script.js" async defer></script>
