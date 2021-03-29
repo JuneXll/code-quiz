@@ -11,6 +11,8 @@ var choiceD = document.getElementById("D");
 var timer = document.getElementById("timer");
 var startPage = document.getElementById("starting-div");
 var finalScore = document.getElementById("final-score");
+var finished = document.getElementById("finished");
+var submit = document.getElementById("submit");
 
 // Questions
 var questions =[
@@ -92,7 +94,7 @@ function startTimer() {
       timeLeft--;
       timer.textContent = timeLeft;
       if (timeLeft >= 0) {
-        if (allDone && count > 0) {
+        if (allDone && timeLeft > 0) {
           clearInterval(countdown);
           completed();
         }
@@ -106,15 +108,16 @@ function startTimer() {
 
 // What happens when quiz is completed
 function completed(){
+    finished.style.display="flex";
+    quiz.style.display="none";
     clearInterval(timer);
-    // renderScore();
-    switchFinish();
   }
 
 //   What happens when timer runs out
 function incomplete(){
-    // renderScore();
-    switchFinish();
+    finished.style.display="flex";
+    quiz.style.display="none;"
+    renderScore();
   }
 
 //   Check answer
@@ -125,13 +128,13 @@ function checkAnswer(answer){
     } else {
         wrongAns();
     }
-    count = 0;
     if(runningQuestion < lastQuestion){
         runningQuestion++;
         renderQuestion();
     } else {
         clearInterval(timer);
-        // renderScore();
+        allDone = true;
+        renderScore();
     }
 }
 
@@ -151,31 +154,29 @@ function wrongAns(){
     var wrong = document.createTextNode("Wrong!");
     newP.appendChild(wrong);
     quiz.appendChild(newP);
+    tenSecsOff();
+    timer.textContent = timeLeft;
 }
 
 // Figure out what was your score
-// function renderScore(){
-//     score = Math.round(100 * score/questions.length);
-//     finalScore.innerText = score+ "%";
+function renderScore(){
+    score = Math.round(100 * score/questions.length);
+    finalScore.innerText = score+ "%";
+}
+
+// Remove ten seconds off the timer for wrong answers
+function tenSecsOff(){
+    timeLeft = timeLeft - 10;
+}
+
+// Listen for submit button on finished page
+// submit.addEventListener("click",highscore);
+
+
+// function highscore(){
+//     window.location.href = "highscores.html";
+
 // }
 
-// Switch to finished page
-function switchFinish(){
-    if(questions[runningQuestion]=== lastQuestion){
-        window.location.href = "finished.html";
-    }
-}
-  // 1-Create timer that will count down from 75 once start button is clicked
-
-//2-Once start button is clicked, 1st question will appear.
-
-//3-User will have to click an answer before going to the new questions =>if wrong choice is picked 10 secs will be deducted from timer and Wrong! will appear under the choices before going onto the next question =>if correct, Correct! will appear under the choices before going onto the next question.
-
-//4-Once 5th question is completed timer will stop OR timer reaches 0 then finished page will appear with score=>asking user to input their initials.
-
-//Initials will then be logged into the highscores page.=>if clear button clicked, all highscores will be removed=>if go back button clicked then quiz will start all over and timer back at 75
-
-
 // things i need to fix:
-// 1. wrong answer deducts 10 sec from countdown
 // 2. remove the appended p after every question 

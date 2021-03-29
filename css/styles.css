@@ -57,7 +57,7 @@ h1, p {
 
 /* Finished page stylings */
 #finished {
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: start;
     align-items: flex-start;
