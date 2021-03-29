@@ -10,6 +10,7 @@ var choiceC = document.getElementById("C");
 var choiceD = document.getElementById("D");
 var timer = document.getElementById("timer");
 var startPage = document.getElementById("starting-div");
+var finalScore = document.getElementById("final-score");
 
 // Questions
 var questions =[
@@ -58,13 +59,14 @@ var questions =[
 // Variables to keep track 
 var lastQuestion = questions.length-1;
 var runningQuestion = 0;
-let timeLeft = 75;
-let score = 0;
-let allDone = false;
+var timeLeft = 75;
+var score = 0;
+var allDone = false;
+
 
 // Render the question and choices
 function renderQuestion(){
-    let q = questions[runningQuestion];
+    var q = questions[runningQuestion];
 
     question.innerHTML = "<h1>" + q.question + "</h1>";
     choiceA.innerHTML = "<button class='choiceAdd'>" + q.choiceA + "</button>";
@@ -103,37 +105,66 @@ function startTimer() {
   }
 
 // What happens when quiz is completed
-  function completed(){
-
+function completed(){
+    clearInterval(timer);
+    // renderScore();
+    switchFinish();
   }
 
 //   What happens when timer runs out
-  function incomplete(){
-
+function incomplete(){
+    // renderScore();
+    switchFinish();
   }
 
 //   Check answer
 function checkAnswer(answer){
-    if(answer == questions[runningQuestion].correct){
-        document.querySelector("hr").style.display = "flex";
-        var newP = document.createElement("p");
-        var correct = newP.createTextNode("Correct!");
-        newP.appendChild(correct);
-        quiz.appendChild(newP);
+    if(answer == questions[runningQuestion].correctAnswer){
+        score++;
+        correctAns();
     } else {
-        document.querySelector("hr").style.display = "flex";
-        var newP = document.createElement("p");
-        var wrong = newP.createTextNode("Wrong!");
-        newP.appendChild(correct);
-        quiz.appendChild(newP);
-
+        wrongAns();
+    }
+    count = 0;
+    if(runningQuestion < lastQuestion){
+        runningQuestion++;
+        renderQuestion();
+    } else {
+        clearInterval(timer);
+        // renderScore();
     }
 }
 
+// If correct answer is chosen..
+function correctAns(){
+    document.querySelector("hr").style.display = "flex";
+    var newP = document.createElement("p");
+    var correct = document.createTextNode("Correct!");
+    newP.appendChild(correct);
+    quiz.appendChild(newP);
+}
 
+// If wrong answer is chosen...
+function wrongAns(){
+    document.querySelector("hr").style.display = "flex";
+    var newP = document.createElement("p");
+    var wrong = document.createTextNode("Wrong!");
+    newP.appendChild(wrong);
+    quiz.appendChild(newP);
+}
 
+// Figure out what was your score
+// function renderScore(){
+//     score = Math.round(100 * score/questions.length);
+//     finalScore.innerText = score+ "%";
+// }
 
-
+// Switch to finished page
+function switchFinish(){
+    if(questions[runningQuestion]=== lastQuestion){
+        window.location.href = "finished.html";
+    }
+}
   // 1-Create timer that will count down from 75 once start button is clicked
 
 //2-Once start button is clicked, 1st question will appear.
@@ -143,3 +174,8 @@ function checkAnswer(answer){
 //4-Once 5th question is completed timer will stop OR timer reaches 0 then finished page will appear with score=>asking user to input their initials.
 
 //Initials will then be logged into the highscores page.=>if clear button clicked, all highscores will be removed=>if go back button clicked then quiz will start all over and timer back at 75
+
+
+// things i need to fix:
+// 1. wrong answer deducts 10 sec from countdown
+// 2. remove the appended p after every question 

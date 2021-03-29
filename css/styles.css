@@ -124,6 +124,7 @@ ol {
 /* Quiz stylings */
 #quiz {
     display: none;
+    width: 550px;
     flex-direction: column;
 }
 
