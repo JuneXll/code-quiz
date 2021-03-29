@@ -179,7 +179,7 @@ function highscore(){
     listScore();
 }
 
-
+// Append the initials and scores to the highscores list
 function listScore(){
     var initials = input.value;
     var li = document.createElement("li");
@@ -189,8 +189,5 @@ function listScore(){
 }
 
 // things i need to fix:
+// 1. finding the submit event listener first on highscores page
 // 2. remove the appended p after every question 
-
-
-
-TESTTTTTT
