@@ -12,7 +12,8 @@ var timer = document.getElementById("timer");
 var startPage = document.getElementById("starting-div");
 var finalScore = document.getElementById("final-score");
 var finished = document.getElementById("finished");
-var submit = document.getElementById("submit");
+var input = document.getElementById("initials")
+var ol = document.getElementById("ol");
 
 // Questions
 var questions =[
@@ -169,14 +170,23 @@ function tenSecsOff(){
     timeLeft = timeLeft - 10;
 }
 
-// Listen for submit button on finished page
-// submit.addEventListener("click",highscore);
+// Changes to highscores page and adds new initials to the list 
+function highscore(){
+    window.location.href = "highscores.html";
+    event.preventDefault;
+    var initials = input.value;
+    localStorage.setItem(initials, score);
+    listScore();
+}
 
 
-// function highscore(){
-//     window.location.href = "highscores.html";
-
-// }
+function listScore(){
+    var initials = input.value;
+    var li = document.createElement("li");
+    var setInitials = document.createTextNode(initials);
+    li.appendChild(setInitials+ " - " + score);
+    ol.appendChild(li);
+}
 
 // things i need to fix:
 // 2. remove the appended p after every question 
