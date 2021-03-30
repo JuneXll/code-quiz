@@ -11,17 +11,19 @@
         <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
+        <!-- Nav bar section to show link to highscores and timer -->
        <header>
            <a href="highscores.html" id="highscores">View Highscores</a>
            <h3>Time:<span id="timer">75</span></h3>
        </header>
+       <!-- Starting page showing instructions -->
        <section>
            <div id="starting-div">
                <h1>Coding Quiz Challenge</h1>
                <p>Try to answer the following code-related questions within the time limit. Keep in mind that the incorrect answers will penalize your score/time by ten seconds! </p>
                <button id="start">Start Quiz</button>
            </div>
-           
+           <!-- Quiz section -->
            <div id="quiz">
                <div id="question">
 
@@ -36,18 +38,19 @@
 
            </div>
 
-           
+           <!-- Finished page showing score and input for initials -->
             <div id="finished">
                 <h1>All done!</h1>
                 <p> Your final score is <span id="final-score">0.</span></p>
                 <form>
                     <p>Enter initials:</p>
                     <input id="intials" type="text">
-                    <button id="submit" ><a href="highscores.html" id="go-back" onclick="highscore();">Submit</a></button>
+                    <button id="submit" ><a href="highscores.html" id="submit" onclick="highscore();">Submit</a></button>
                 </form>
             </div>
                 
        </section>
+       <!-- Javascript link -->
         <script src="script.js" async defer></script>
     </body>
 </html>

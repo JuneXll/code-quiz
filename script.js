@@ -12,6 +12,7 @@ var timer = document.getElementById("timer");
 var startPage = document.getElementById("starting-div");
 var finalScore = document.getElementById("final-score");
 var finished = document.getElementById("finished");
+var submit = document.getElementById("submit");
 var input = document.getElementById("initials")
 var ol = document.getElementById("ol");
 
@@ -170,8 +171,12 @@ function tenSecsOff(){
     timeLeft = timeLeft - 10;
 }
 
+// Event listener for finished page
+submit.addEventListener("click",highscore);
+
+
 // Changes to highscores page and adds new initials to the list 
-function highscore(){
+function highscore(event){
     window.location.href = "highscores.html";
     event.preventDefault;
     var initials = input.value;
@@ -191,3 +196,4 @@ function listScore(){
 // things i need to fix:
 // 1. finding the submit event listener first on highscores page
 // 2. remove the appended p after every question 
+// 3. Add function that clears the highscores
