@@ -13,8 +13,9 @@ var startPage = document.getElementById("starting-div");
 var finalScore = document.getElementById("final-score");
 var finished = document.getElementById("finished");
 var submit = document.getElementById("submit");
-var input = document.getElementById("initials")
+var initials = document.querySelector("#initials").value;
 var ol = document.getElementById("ol");
+var high = document.getElementById("high");
 
 // Questions
 var questions =[
@@ -172,28 +173,29 @@ function tenSecsOff(){
 }
 
 // Event listener for finished page
-submit.addEventListener("click",highscore);
+submit.addEventListener("click", highscore);
 
 
 // Changes to highscores page and adds new initials to the list 
-function highscore(event){
-    window.location.href = "highscores.html";
-    event.preventDefault;
-    var initials = input.value;
-    localStorage.setItem(initials, score);
+function highscore(){
     listScore();
+    high.style.display = "flex";
+    finished.style.display = "none";
+    localStorage.setItem("player-score", (JSON.stringify(initials + " - " + score))) ;
+    
 }
 
 // Append the initials and scores to the highscores list
 function listScore(){
-    var initials = input.value;
     var li = document.createElement("li");
     var setInitials = document.createTextNode(initials);
-    li.appendChild(setInitials+ " - " + score);
-    ol.appendChild(li);
+    li.append(setInitials+ " - " + score);
+    ol.append(li);
 }
 
-// things i need to fix:
-// 1. finding the submit event listener first on highscores page
-// 2. remove the appended p after every question 
-// 3. Add function that clears the highscores
+//To-Do:
+//event listener for go back button on highscores page
+// event listener for view highscores link to highscores
+// remove the appended p after every question 
+//  Add function that clears the highscores
+// set if statement if no initials are entered
