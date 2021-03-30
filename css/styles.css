@@ -57,13 +57,15 @@ h1, p {
 
 /* Finished page stylings */
 #finished {
+    width: 550px;
     display: none;
     flex-direction: column;
     justify-content: start;
     align-items: flex-start;
+    margin-left: 25px;
 }
 
-form {
+#input-div {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;

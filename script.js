@@ -172,7 +172,7 @@ function tenSecsOff(){
     timeLeft = timeLeft - 10;
 }
 
-// Event listener for finished page
+// Event listener for finished page to go to highscores
 submit.addEventListener("click", highscore);
 
 
@@ -181,7 +181,7 @@ function highscore(){
     listScore();
     high.style.display = "flex";
     finished.style.display = "none";
-    localStorage.setItem("player-score", (JSON.stringify(initials + " - " + score))) ;
+    localStorage.setItem("player-score", (JSON.stringify(initials + " - " + score + "%"))) ;
     
 }
 
@@ -189,9 +189,17 @@ function highscore(){
 function listScore(){
     var li = document.createElement("li");
     var setInitials = document.createTextNode(initials);
-    li.append(setInitials+ " - " + score);
+    li.append(setInitials+ " - " + score + "%");
     ol.append(li);
 }
+
+// Event listener to go-back button to return to starting div
+document.getElementById("go-back").addEventListener("click", function(){
+    high.style.display = "none";
+    startPage.style.display = "flex";
+})
+
+
 
 //To-Do:
 //event listener for go back button on highscores page
@@ -199,3 +207,4 @@ function listScore(){
 // remove the appended p after every question 
 //  Add function that clears the highscores
 // set if statement if no initials are entered
+//set scores from high to low
