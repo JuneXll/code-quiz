@@ -16,6 +16,8 @@ var submit = document.querySelector("#submit");
 var initials = document.getElementById("initials").value;
 var ol = document.getElementById("ol");
 var high = document.getElementById("high");
+var highscoresHeader = document.getElementById("highscores-header");
+var highscores = document.getElementById("highscores");
 
 // Questions
 var questions =[
@@ -148,6 +150,9 @@ function correctAns(){
     var correct = document.createTextNode("Correct!");
     newP.appendChild(correct);
     quiz.appendChild(newP);
+    if(runningQuestion){
+        newP.parentElement.removeChild(newP);
+    }
 }
 
 // If wrong answer is chosen...
@@ -159,6 +164,9 @@ function wrongAns(){
     quiz.appendChild(newP);
     tenSecsOff();
     timer.textContent = timeLeft;
+    if(runningQuestion){
+        newP.parentElement.removeChild(newP);
+    }
 }
 
 // Figure out what was your score
@@ -181,6 +189,7 @@ function highscore(event){
     event.preventDefault();
     high.style.display = "flex";
     finished.style.display = "none";
+    highscoresHeader.style.display = "none";
     localStorage.setItem("player-score", (JSON.stringify(initials + " - " + score + "%")));
 
     listScore();
@@ -199,17 +208,25 @@ function listScore(){
 document.getElementById("go-back").addEventListener("click", function(){
     high.style.display = "none";
     startPage.style.display = "flex";
+    highscoresHeader.style.display = "flex";
     timeLeft = 75;
     timer.textContent = timeLeft;
 })
 
-
+// Link for the view highscores
+highscores.addEventListener("click",function (){
+    clearInterval(timer);
+    highscoresHeader.style.display = "none";
+    startPage.style.display = "none";
+    quiz.style.display = "none";
+    finished.style.display = "none";
+    high.style.display = "flex";
+})
 
 //To-Do:
-//fix bug start button after quiz has be completed
-// event listener for view highscores link to highscores
+//fix bug start button after quiz has been completed at least once(goes straight to last question for 3 secs then jumps to finished page)
 // remove the appended p after every question 
 //  Add function that clears the highscores
 // set if statement if no initials are entered
 //set scores from high to low
-//fix bug with scores
+
