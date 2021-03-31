@@ -54,6 +54,38 @@ h1, p {
 #start:hover {
     background-color: #c1a1d3;
 }
+    
+/* Quiz stylings */
+#quiz {
+    display: none;
+    width: 550px;
+    flex-direction: column;
+}
+
+#question {
+    display:block;
+}
+
+#choices {
+    margin: 10px;
+}
+
+.choiceAdd {
+    text-decoration: none;
+    background-color: purple;
+    color: white;
+    border-radius: 10px;
+}
+
+.choiceAdd:hover {
+    background-color: #c1a1d3;
+}
+
+hr {
+    display: none;
+    width:100%;
+    color:lightgray;
+}
 
 /* Finished page stylings */
 #finished {
@@ -124,35 +156,4 @@ ol {
     width: 100%;
 }
 
-/* Quiz stylings */
-#quiz {
-    display: none;
-    width: 550px;
-    flex-direction: column;
-}
-
-#question {
-    display:block;
-}
-
-#choices {
-    margin: 10px;
-}
-
-.choiceAdd {
-    text-decoration: none;
-    background-color: purple;
-    color: white;
-    border-radius: 10px;
-}
-
-.choiceAdd:hover {
-    background-color: #c1a1d3;
-}
-
-hr {
-    display: none;
-    width:100%;
-    color:lightgray;
-}
 

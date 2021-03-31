@@ -12,7 +12,7 @@ var timer = document.getElementById("timer");
 var startPage = document.getElementById("starting-div");
 var finalScore = document.getElementById("final-score");
 var finished = document.getElementById("finished");
-var submit = document.getElementById("submit");
+var submit = document.querySelector("#submit");
 var initials = document.querySelector("#initials").value;
 var ol = document.getElementById("ol");
 var high = document.getElementById("high");
@@ -177,12 +177,12 @@ submit.addEventListener("click", highscore);
 
 
 // Changes to highscores page and adds new initials to the list 
-function highscore(){
+function highscore(event){
+    event.preventDefault();
     listScore();
     high.style.display = "flex";
     finished.style.display = "none";
     localStorage.setItem("player-score", (JSON.stringify(initials + " - " + score + "%"))) ;
-    
 }
 
 // Append the initials and scores to the highscores list
@@ -197,14 +197,17 @@ function listScore(){
 document.getElementById("go-back").addEventListener("click", function(){
     high.style.display = "none";
     startPage.style.display = "flex";
+    timeLeft = 75;
+    timer.textContent = timeLeft;
 })
 
 
 
 //To-Do:
-//event listener for go back button on highscores page
+//fix bug start button after quiz has be completed
 // event listener for view highscores link to highscores
 // remove the appended p after every question 
 //  Add function that clears the highscores
 // set if statement if no initials are entered
 //set scores from high to low
+//fix bug with scores
