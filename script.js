@@ -13,14 +13,13 @@ var startPage = document.getElementById("starting-div");
 var finalScore = document.getElementById("final-score");
 var finished = document.getElementById("finished");
 var submit = document.querySelector("#submit");
-var initials = document.getElementById("initials").value;
 var ol = document.getElementById("ol");
 var high = document.getElementById("high");
 var highscoresHeader = document.getElementById("highscores-header");
 var highscores = document.getElementById("highscores");
 
 // Questions
-var questions =[
+var questions =[ 
 
     {
         question: "Commonly used data types DO NOT include:",
@@ -157,9 +156,9 @@ function correctAns(){
     var correct = document.createTextNode("Correct!");
     newP.appendChild(correct);
     quiz.appendChild(newP);
-    if(runningQuestion){
-        newP.parentElement.removeChild(newP);
-    }
+    // if(runningQuestion){
+    //     newP.parentElement.removeChild(newP);
+    // }
 }
 
 // If wrong answer is chosen...
@@ -172,9 +171,9 @@ function wrongAns(){
     quiz.appendChild(newP);
     tenSecsOff();
     timer.textContent = timeLeft;
-    if(runningQuestion){
-        newP.parentElement.removeChild(newP);
-    }
+    // if(runningQuestion){
+    //     newP.parentElement.removeChild(newP);
+    // }
 }
 
 // Figure out what was your score
@@ -195,24 +194,38 @@ submit.addEventListener("click", highscore);
 
 // Changes to highscores page and adds new initials to the list 
 function highscore(event){
-
+    var initials = document.getElementById("initials").value;
     event.preventDefault();
     high.style.display = "flex";
     finished.style.display = "none";
     highscoresHeader.style.display = "none";
-    localStorage.setItem("player-score", (JSON.stringify(initials + " - " + score + "%")));
+    var highscoresVar = localStorage.getItem("player-score");
+    if(highscoresVar){
+        highscoresVar = JSON.parse(highscoresVar);
+    } else {
+        highscoresVar = [];
+    }
+    highscoresVar.push(initials + " - " + score + "%")
+    localStorage.setItem("player-score", (JSON.stringify(highscoresVar)));
 
     listScore();
 }
 
 // Append the initials and scores to the highscores list
 function listScore(){
+    var highscoresVar = localStorage.getItem("player-score");
+    if(highscoresVar){
+        highscoresVar = JSON.parse(highscoresVar);
+    } else {
+        highscoresVar = [];
+    }
 
+    for(var i = 0; i < highscoresVar.length; i++){
     var li = document.createElement("li");
-    var setInitials = document.createTextNode(initials);
-    li.append(setInitials+ " - " + score + "%");
+    li.append(highscoresVar[i]);
     ol.append(li);
-    console.log(setInitials);
+   }
+
 }
 
 // Event listener to go-back button to return to starting div
