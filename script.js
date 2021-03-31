@@ -21,6 +21,7 @@ var highscores = document.getElementById("highscores");
 
 // Questions
 var questions =[
+
     {
         question: "Commonly used data types DO NOT include:",
         choiceA: "1. Strings",
@@ -73,6 +74,7 @@ var allDone = false;
 
 // Render the question and choices
 function renderQuestion(){
+
     var q = questions[runningQuestion];
 
     question.innerHTML = "<h1>" + q.question + "</h1>";
@@ -87,6 +89,7 @@ function renderQuestion(){
 start.addEventListener("click", startQuiz);
 
 function startQuiz(){
+
     startPage.style.display="none";
     startTimer();
     renderQuestion();
@@ -95,6 +98,7 @@ function startQuiz(){
 
 // start timer
 function startTimer() {
+
    var countdown = setInterval(function() {
       timeLeft--;
       timer.textContent = timeLeft;
@@ -113,6 +117,7 @@ function startTimer() {
 
 // What happens when quiz is completed
 function completed(){
+
     finished.style.display="flex";
     quiz.style.display="none";
     clearInterval(timer);
@@ -120,6 +125,7 @@ function completed(){
 
 //   What happens when timer runs out
 function incomplete(){
+
     finished.style.display="flex";
     quiz.style.display="none;"
     renderScore();
@@ -145,6 +151,7 @@ function checkAnswer(answer){
 
 // If correct answer is chosen..
 function correctAns(){
+    
     document.querySelector("hr").style.display = "flex";
     var newP = document.createElement("p");
     var correct = document.createTextNode("Correct!");
@@ -157,6 +164,7 @@ function correctAns(){
 
 // If wrong answer is chosen...
 function wrongAns(){
+
     document.querySelector("hr").style.display = "flex";
     var newP = document.createElement("p");
     var wrong = document.createTextNode("Wrong!");
@@ -171,6 +179,7 @@ function wrongAns(){
 
 // Figure out what was your score
 function renderScore(){
+
     score = Math.round(100 * score/questions.length);
     finalScore.innerText = score+ "%";
 }
@@ -186,6 +195,7 @@ submit.addEventListener("click", highscore);
 
 // Changes to highscores page and adds new initials to the list 
 function highscore(event){
+
     event.preventDefault();
     high.style.display = "flex";
     finished.style.display = "none";
@@ -197,6 +207,7 @@ function highscore(event){
 
 // Append the initials and scores to the highscores list
 function listScore(){
+
     var li = document.createElement("li");
     var setInitials = document.createTextNode(initials);
     li.append(setInitials+ " - " + score + "%");
@@ -206,6 +217,7 @@ function listScore(){
 
 // Event listener to go-back button to return to starting div
 document.getElementById("go-back").addEventListener("click", function(){
+
     high.style.display = "none";
     startPage.style.display = "flex";
     highscoresHeader.style.display = "flex";
@@ -222,6 +234,7 @@ highscores.addEventListener("click",function (){
     finished.style.display = "none";
     high.style.display = "flex";
 })
+
 
 //To-Do:
 //fix bug start button after quiz has been completed at least once(goes straight to last question for 3 secs then jumps to finished page)
