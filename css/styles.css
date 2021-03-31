@@ -54,7 +54,7 @@ h1, p {
 #start:hover {
     background-color: #c1a1d3;
 }
-    
+
 /* Quiz stylings */
 #quiz {
     display: none;
@@ -147,7 +147,7 @@ hr {
 }
 
 #score-list {
-    width: 90%;
+    width: 100%;
     padding: 0;
 }
 

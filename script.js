@@ -13,7 +13,7 @@ var startPage = document.getElementById("starting-div");
 var finalScore = document.getElementById("final-score");
 var finished = document.getElementById("finished");
 var submit = document.querySelector("#submit");
-var initials = document.querySelector("#initials").value;
+var initials = document.getElementById("initials").value;
 var ol = document.getElementById("ol");
 var high = document.getElementById("high");
 
@@ -179,10 +179,11 @@ submit.addEventListener("click", highscore);
 // Changes to highscores page and adds new initials to the list 
 function highscore(event){
     event.preventDefault();
-    listScore();
     high.style.display = "flex";
     finished.style.display = "none";
-    localStorage.setItem("player-score", (JSON.stringify(initials + " - " + score + "%"))) ;
+    localStorage.setItem("player-score", (JSON.stringify(initials + " - " + score + "%")));
+
+    listScore();
 }
 
 // Append the initials and scores to the highscores list
@@ -191,6 +192,7 @@ function listScore(){
     var setInitials = document.createTextNode(initials);
     li.append(setInitials+ " - " + score + "%");
     ol.append(li);
+    console.log(setInitials);
 }
 
 // Event listener to go-back button to return to starting div
