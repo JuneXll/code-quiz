@@ -17,6 +17,7 @@ var ol = document.getElementById("ol");
 var high = document.getElementById("high");
 var highscoresHeader = document.getElementById("highscores-header");
 var highscores = document.getElementById("highscores");
+var clear = document.getElementById("clear-highscores");
 
 // Questions
 var questions =[ 
@@ -172,7 +173,7 @@ function wrongAns(){
     tenSecsOff();
     timer.textContent = timeLeft;
     // if(runningQuestion){
-    //     newP.parentElement.removeChild(newP);
+    //     newP.lastElementChild.removeChild(newP);
     // }
 }
 
@@ -199,30 +200,30 @@ function highscore(event){
     high.style.display = "flex";
     finished.style.display = "none";
     highscoresHeader.style.display = "none";
-    var highscoresVar = localStorage.getItem("player-score");
-    if(highscoresVar){
-        highscoresVar = JSON.parse(highscoresVar);
+    var highscoresArray = localStorage.getItem("player-score");
+    if(highscoresArray){
+        highscoresArray = JSON.parse(highscoresArray);
     } else {
-        highscoresVar = [];
+        highscoresArray = [];
     }
-    highscoresVar.push(initials + " - " + score + "%")
-    localStorage.setItem("player-score", (JSON.stringify(highscoresVar)));
+    highscoresArray.push(initials + " - " + score + "%")
+    localStorage.setItem("player-score", (JSON.stringify(highscoresArray)));
 
     listScore();
 }
 
 // Append the initials and scores to the highscores list
 function listScore(){
-    var highscoresVar = localStorage.getItem("player-score");
-    if(highscoresVar){
-        highscoresVar = JSON.parse(highscoresVar);
+    var highscoresArray = localStorage.getItem("player-score");
+    if(highscoresArray){
+        highscoresArray = JSON.parse(highscoresArray);
     } else {
-        highscoresVar = [];
+        highscoresArray = [];
     }
 
-    for(var i = 0; i < highscoresVar.length; i++){
+    for(var i = 0; i < highscoresArray.length; i++){
     var li = document.createElement("li");
-    li.append(highscoresVar[i]);
+    li.append(highscoresArray[i]);
     ol.append(li);
    }
 
@@ -248,6 +249,13 @@ highscores.addEventListener("click",function (){
     high.style.display = "flex";
 })
 
+
+//Event listener for button that clears the highscores
+clear.addEventListener("click", function(){
+    localStorage.clear();
+    highscoresArray = [];
+    ol.innerHTML = "";
+})
 
 //To-Do:
 //fix bug start button after quiz has been completed at least once(goes straight to last question for 3 secs then jumps to finished page)
