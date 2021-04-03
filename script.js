@@ -157,8 +157,9 @@ function correctAns(){
     var correct = document.createTextNode("Correct!");
     newP.appendChild(correct);
     quiz.appendChild(newP);
+    // Can't figure out how to remove an appended p tag that was added dynamically with vanillas javascript
     // if(runningQuestion){
-    //     newP.parentElement.removeChild(newP);
+    //     newP.parentElement.removeElement(choices[5]);
     // }
 }
 
@@ -172,8 +173,9 @@ function wrongAns(){
     quiz.appendChild(newP);
     tenSecsOff();
     timer.textContent = timeLeft;
+    // Can't figure out how to remove an appended p tag that was added dynamically with vanillas javascript
     // if(runningQuestion){
-    //     newP.lastElementChild.removeChild(newP);
+    //     newP.parentElement.removeElement(choices[5]);
     // }
 }
 
@@ -182,6 +184,12 @@ function renderScore(){
 
     score = Math.round(100 * score/questions.length);
     finalScore.innerText = score+ "%";
+    // if(document.getElementById("initials").value == ""){
+    //     submit.disabled = true;
+    // } else if(initials == document.getElementById("initials").value){
+    //     submit.disabled = false;
+    // }
+   
 }
 
 // Remove ten seconds off the timer for wrong answers
@@ -195,17 +203,21 @@ submit.addEventListener("click", highscore);
 
 // Changes to highscores page and adds new initials to the list 
 function highscore(event){
-    var initials = document.getElementById("initials").value;
-    event.preventDefault();
+
     high.style.display = "flex";
     finished.style.display = "none";
     highscoresHeader.style.display = "none";
+
+    var initials = document.getElementById("initials").value;
+    event.preventDefault();
+    
     var highscoresArray = localStorage.getItem("player-score");
     if(highscoresArray){
         highscoresArray = JSON.parse(highscoresArray);
     } else {
         highscoresArray = [];
     }
+
     highscoresArray.push(initials + " - " + score + "%")
     localStorage.setItem("player-score", (JSON.stringify(highscoresArray)));
 
@@ -237,10 +249,14 @@ document.getElementById("go-back").addEventListener("click", function(){
     highscoresHeader.style.display = "flex";
     timeLeft = 75;
     timer.textContent = timeLeft;
+    lastQuestion = questions.length-1;
+    runningQuestion = 0;
+    
 })
 
 // Link for the view highscores
 highscores.addEventListener("click",function (){
+
     clearInterval(timer);
     highscoresHeader.style.display = "none";
     startPage.style.display = "none";
@@ -258,9 +274,7 @@ clear.addEventListener("click", function(){
 })
 
 //To-Do:
-//fix bug start button after quiz has been completed at least once(goes straight to last question for 3 secs then jumps to finished page)
+//fix bug start button after quiz has been completed at least once
 // remove the appended p after every question 
-//  Add function that clears the highscores
 // set if statement if no initials are entered
-//set scores from high to low
-
+//lock score so it only counts it once
