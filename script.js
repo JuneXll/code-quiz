@@ -274,7 +274,7 @@ clear.addEventListener("click", function(){
 })
 
 //To-Do:
-//fix bug start button after quiz has been completed at least once
+//fix bug start button after quiz has been completed at least once, will hold the current questions for 2 sec then jump to the finished page 
 // remove the appended p after every question 
 // set if statement if no initials are entered
 //lock score so it only counts it once
