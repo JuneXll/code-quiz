@@ -278,3 +278,4 @@ clear.addEventListener("click", function(){
 // remove the appended p after every question 
 // set if statement if no initials are entered
 //lock score so it only counts it once
+//
