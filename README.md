@@ -1,4 +1,6 @@
 # code-quiz
+
+URL:https://junexll.github.io/code-quiz/
 ![2021-04-06 09 05 28](https://user-images.githubusercontent.com/71652307/113715355-6a356d80-96b7-11eb-94c8-57cf73aac66e.gif)
 #This quiz will run through a series of questions. Along the way, the quiz will let you know if your answer was correct or wrong. 
 
